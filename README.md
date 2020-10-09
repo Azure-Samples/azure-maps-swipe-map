@@ -51,52 +51,52 @@ Download the project and copy the `azure-maps-swipe-map` JavaScript file from th
         var primaryMap, secondaryMap;
 
         function GetMap() {
-			//Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
-			var authOptions = {
-				authType: 'subscriptionKey',
-				subscriptionKey: '<Your Azure Maps Key>'
-			};
-		
-            //Initialize a left map instance.
-            primaryMap = new atlas.Map('primaryMap', {
-                center: [-100, 35],
-                zoom: 3,
-                style: 'grayscale_dark',
-				view: 'Auto',		
-                authOptions: authOptions
-            });
+		//Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
+		var authOptions = {
+			authType: 'subscriptionKey',
+			subscriptionKey: '<Your Azure Maps Key>'
+		};
 
-            primaryMap.events.add('ready', function () {
-                //Add some data to the primary map.
-            });
+		//Initialize a left map instance.
+		primaryMap = new atlas.Map('primaryMap', {
+			center: [-100, 35],
+			zoom: 3,
+			style: 'grayscale_dark',
+			view: 'Auto',		
+			authOptions: authOptions
+		});
+
+		primaryMap.events.add('ready', function () {
+			//Add some data to the primary map.
+		});
 
 			//Initialize a right map instance.
-            secondaryMap = new atlas.Map('secondaryMap', {
-                style: 'grayscale_dark',
-				view: 'Auto',
-                authOptions: authOptions
-            });
+		secondaryMap = new atlas.Map('secondaryMap', {
+			style: 'grayscale_dark',
+			view: 'Auto',
+			authOptions: authOptions
+		});
 
-            secondaryMap.events.add('ready', function () {
-                //Add some data to the secondary map.
-            });
+		secondaryMap.events.add('ready', function () {
+			//Add some data to the secondary map.
+		});
 
-            //Initialize the swipe map experience.
-            var swipeMap = new atlas.SwipeMap(primaryMap, secondaryMap);
+		//Initialize the swipe map experience.
+		var swipeMap = new atlas.SwipeMap(primaryMap, secondaryMap);
 
-            //Optionally monitor the positionChanged event of the swipeMap. This event can be attached to either map.
-            primaryMap.events.add('positionChanged', swipeMap, function (x) {
-                //Do something
-            });
+		//Optionally monitor the positionChanged event of the swipeMap. This event can be attached to either map.
+		primaryMap.events.add('positionChanged', swipeMap, function (x) {
+			//Do something
+		});
         }
     </script>
     <style>
-		html, body {
-			width: 100%;
-			height: 100%;
-			padding: 0;
-			margin: 0;
-		}
+	html, body {
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		margin: 0;
+	}
 	
         .mapContainer {
             position: relative;
