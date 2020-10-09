@@ -1,57 +1,197 @@
-# Project Name
+---
+page_type: sample
+description: A module for the Azure Maps Web SDK that allows swiping between two overlapping maps, ideal for comparing two overlapping data sets.
+languages:
+- javascript
+- typescript
+products:
+- azure
+- azure-maps
+---
 
-(short, 1-3 sentenced, description of the project)
+# Azure Maps Swipe Map module
 
-## Features
+A module for the Azure Maps Web SDK that allows swiping between two overlapping maps, ideal for comparing two overlapping data sets.
 
-This project framework provides the following features:
+**Samples**
 
-* Feature 1
-* Feature 2
-* ...
+[Swipe between two maps](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20between%20two%20maps)
+<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/Swipe-between-two-maps.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20between%20two%20maps)
 
-## Getting Started
+[Swipe map with fullscreen support](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20map%20with%20fullscreen%20support)
+<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/Swipe-map-with-fullscreen-support.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20map%20with%20fullscreen%20support)
 
-### Prerequisites
+[Swipe map module options](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20map%20module%20options)
+<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/Swipe-map-module-options.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20map%20module%20options)
 
-(ideally very short, if any)
+## Getting started
 
-- OS
-- Library version
-- ...
+Download the project and copy the `azure-maps-swipe-map` JavaScript file from the `dist` folder into your project. 
 
-### Installation
+**Usage**
 
-(ideally very short)
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
 
-- npm install [package name]
-- mvn install
-- ...
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-### Quickstart
-(Add steps to get up and running quickly)
+    <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+    <!-- Load in the JavaScript for the swipe map module. -->
+    <script src="../dist/azure-maps-swipe-map.min.js"></script>
 
+    <script type='text/javascript'>
+        var primaryMap, secondaryMap;
 
-## Demo
+        function GetMap() {
+			//Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
+			var authOptions = {
+				authType: 'subscriptionKey',
+				subscriptionKey: '<Your Azure Maps Key>'
+			};
+		
+            //Initialize a left map instance.
+            primaryMap = new atlas.Map('primaryMap', {
+                center: [-100, 35],
+                zoom: 3,
+                style: 'grayscale_dark',
+				view: 'Auto',		
+                authOptions: authOptions
+            });
 
-A demo app is included to show how to use the project.
+            primaryMap.events.add('ready', function () {
+                //Add some data to the primary map.
+            });
 
-To run the demo, follow these steps:
+			//Initialize a right map instance.
+            secondaryMap = new atlas.Map('secondaryMap', {
+                style: 'grayscale_dark',
+				view: 'Auto',
+                authOptions: authOptions
+            });
 
-(Add steps to start up the demo)
+            secondaryMap.events.add('ready', function () {
+                //Add some data to the secondary map.
+            });
 
-1.
-2.
-3.
+            //Initialize the swipe map experience.
+            var swipeMap = new atlas.SwipeMap(primaryMap, secondaryMap);
 
-## Resources
+            //Optionally monitor the positionChanged event of the swipeMap. This event can be attached to either map.
+            primaryMap.events.add('positionChanged', swipeMap, function (x) {
+                //Do something
+            });
+        }
+    </script>
+    <style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+		}
+	
+        .mapContainer {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
 
-(Any additional resources or related projects)
+        .map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body onload="GetMap()">
+    <div class="mapContainer">
+        <div id="primaryMap" class="map"></div>
+        <div id="secondaryMap" class="map"></div>
+    </div>
+</body>
+</html>
+```
 
-- Link to supporting information
-- Link to similar sample
-- ...
+## API Reference
+
+### SwipeMap class
+
+Namespace: `atlas`
+
+A control that allows swiping between two overlapping maps, ideal for comparing two overlapping data sets.
+
+**Contstructor**
+
+> `SwipeMap(primaryMap: atlas.Map, secondaryMap: atlas.Map, options?: SwipeMapOptions)`
+
+**Methods** 
+
+| Name | Return type | Description |
+|------|-------------|-------------|
+| `dispose()` | | Doisposes the control. |
+| `getOptions()` | `SwipeMapOption` | Gets the options of the control. |
+| `setOptions(options: SwipeMapOption)` | | Sets the options of the control. |
+
+**Events**
+
+| Name | Return type | Description |
+|------|-------------|-------------|
+| `positionChanged` | `number` | Event fired when the  slider position has changed. returns the slider position value in pixels. This event can be attached to either map. |
+
+### SwipeMapOption interface
+
+Options for the `SwipeMap` class.
+
+**Properties** 
+
+| Name | Type | Description |
+|------|------|-------------|
+| `interactive` | `boolean` | Specifies if the slider can be moved using mouse, touch or keyboard. Default: `true` |
+| `orientation` | `'vertical'` \| `'horizontal'` | The orientation of the swipe map control. Can be `vertical` or `horizontal`. Default: `vertical` |
+| `sliderPosition` | `number` | The position of the slider in pixels relative to the left or top edge of the viewport, depending on orientation. Defaults to half the width or height depending on orientation. |
+| `style` | `'light` \| `'dark'` \| `string` | The style of the control. Can be; `light`, `dark`, `auto`, or any CSS3 color. Overridden if device is in high contrast mode. Default `light`. |
+
+## Related Projects
+
+* [Azure Maps Web SDK Open modules](https://github.com/microsoft/Maps/blob/master/AzureMaps.md#open-web-sdk-modules) - A collection of open source modules that extend the Azure Maps Web SDK.
+* [Azure Maps Web SDK Samples](https://github.com/Azure-Samples/AzureMapsCodeSamples)
+* [Azure Maps Gov Cloud Web SDK Samples](https://github.com/Azure-Samples/AzureMapsGovCloudCodeSamples)
+* [Azure Maps & Azure Active Directory Samples](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+* [List of open-source Azure Maps projects](https://github.com/microsoft/Maps/blob/master/AzureMaps.md)
+
+## Additional Resources
+
+* [Azure Maps (main site)](https://azure.com/maps)
+* [Azure Maps Documentation](https://docs.microsoft.com/azure/azure-maps/index)
+* [Azure Maps Blog](https://azure.microsoft.com/blog/topics/azure-maps/)
+* [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-maps.html)
+* [Azure Maps feedback](https://feedback.azure.com/forums/909172-azure-maps)
+
+## Contributing
+
+We welcome contributions. Feel free to submit code samples, file issues and pull requests on the repo and we'll address them as we can. 
+Learn more about how you can help on our [Contribution Rules & Guidelines](https://github.com/Azure-Samples/azure-maps-swipe-map/blob/master/CONTRIBUTING.md). 
+
+You can reach out to us anytime with questions and suggestions using our communities below:
+* [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-maps.html)
+* [Azure Maps feedback](https://feedback.azure.com/forums/909172-azure-maps)
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). 
+For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or 
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## License
+
+MIT
+ 
+See [License](https://github.com/Azure-Samples/azure-maps-swipe-map/blob/master/LICENSE.md) for full license text.

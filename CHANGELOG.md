@@ -1,13 +1,7 @@
-## [project-title] Changelog
+## Azure Maps Swipe Map module Changelog
 
-<a name="x.y.z"></a>
-# x.y.z (yyyy-mm-dd)
+<a name="0.0.1"></a>
+# 0.0.1 (2020-10-9)
 
 *Features*
-* ...
-
-*Bug Fixes*
-* ...
-
-*Breaking Changes*
-* ...
+* Swipe map static function added to `atlas` namespace.
