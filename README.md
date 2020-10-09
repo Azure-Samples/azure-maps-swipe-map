@@ -103,7 +103,7 @@ Download the project and copy the `azure-maps-swipe-map` JavaScript file from th
             width: 100%;
             height: 100%;
         }
-
+	    
         .map {
             position: absolute;
             top: 0;
