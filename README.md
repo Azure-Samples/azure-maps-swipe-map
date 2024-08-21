@@ -15,14 +15,14 @@ A module for the Azure Maps Web SDK that allows swiping between two overlapping 
 
 **Samples**
 
-[Swipe between two maps](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20between%20two%20maps)
-<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/Swipe-between-two-maps.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20between%20two%20maps)
+[Swipe between two maps](https://samples.azuremaps.com/?sample=swipe-between-two-maps)
+<br/>[<img src="https://samples.azuremaps.com/map/swipe-between-two-maps/screenshot.jpg" height="200px">](https://samples.azuremaps.com/?sample=swipe-between-two-maps)
 
-[Swipe map with fullscreen support](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20map%20with%20fullscreen%20support)
-<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/Swipe-map-with-fullscreen-support.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20map%20with%20fullscreen%20support)
+[Swipe map with fullscreen support](https://samples.azuremaps.com/?sample=swipe-map-with-fullscreen-support)
+<br/>[<img src="https://samples.azuremaps.com/map/swipe-map-with-fullscreen-support/screenshot.jpg" height="200px">](https://samples.azuremaps.com/?sample=swipe-map-with-fullscreen-support)
 
-[Swipe map module options](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20map%20module%20options)
-<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/Swipe-map-module-options.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Swipe%20map%20module%20options)
+[Swipe map module options](https://samples.azuremaps.com/?sample=swipe-map-module-options)
+<br/>[<img src="https://samples.azuremaps.com/map/swipe-map-module-options/screenshot.jpg" height="200px">](https://samples.azuremaps.com/?sample=swipe-map-module-options)
 
 ## Getting started
 
