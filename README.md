@@ -138,7 +138,7 @@ A control that allows swiping between two overlapping maps, ideal for comparing 
 
 | Name | Return type | Description |
 |------|-------------|-------------|
-| `dispose()` | | Doisposes the control. |
+| `dispose()` | | Disposes the control. |
 | `getOptions()` | `SwipeMapOption` | Gets the options of the control. |
 | `setOptions(options: SwipeMapOption)` | | Sets the options of the control. |
 
